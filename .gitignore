@@ -1,0 +1,7 @@
+# 中间文件
+*.lock
+target/
+
+# other
+get-dependencies
+main
