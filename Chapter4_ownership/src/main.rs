@@ -125,22 +125,22 @@ fn main() {
     // s 的类型为 &str, 是一个指向二进制程序特定位置的slice。
     // 这解释了为什么字符串字面值是不可变的(immutable), &str 是一个不可变引用
 
-    let my_string = String::from("hello world");
+    //let my_string = String::from("hello world");
 
     // `first_word` 适用于 `String`(的slice), 部分或全部
-    let word = first_word(&my_string[0..6]);
-    let word = first_word(&my_string[..]);
+    //let word: &str = first_word(&my_string[0..6]);
+    //let word: &str = first_word(&my_string[..]);
 
     // &my_string[..] 等价于 &my_string
-    let word = first_word(&my_string);
+    //let word: &str = first_word(&my_string);
 
-    let my_string_literal = "hello world"; // 字面值
+    //let my_string_literal = "hello world"; // 字面值
 
-    let word = first_word(&my_string_literal[0..6]);
-    let word = first_word(&my_string_literal[..]);
+    //let word: &str = first_word(&my_string_literal[0..6]);
+    //let word: &str = first_word(&my_string_literal[..]);
 
     // 或者最简洁
-    let word = first_word(my_string_literal);
+    //let word: &str = first_word(my_string_literal);
 
     // 其他类型的 slice
     let a = [1, 2, 3, 4, 5];
