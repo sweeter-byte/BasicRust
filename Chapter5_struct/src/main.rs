@@ -1,3 +1,4 @@
+#[derive(Debug)]
 struct User {
     active: bool,
     username: String,
@@ -6,13 +7,16 @@ struct User {
 } // 这里没有分号
 
 
+
 // 元组结构体： 没有具体的字段名，只有字段的类型
 
+#[derive(Debug)]
 struct Color(i32, i32, i32);
+#[derive(Debug)]
 struct Point(i32, i32, i32);
 
 // 没有任何字段的类单元结构体
-
+#[derive(Debug)]
 struct AlwaysEqual;
 
 /* example */
@@ -57,6 +61,9 @@ fn main() {
 
     // 可以使用 . 访问某一个成员变量
     user1.email = String::from("anotheremail@example.com"); // 注意，此时user1 必须是mut
+    user1.active = false;
+    user1.sign_in_count = 0;
+    user1.username = String::from("Zhangsan");
 
     // 结构体更新语法
     //let user2 = User {
@@ -72,16 +79,26 @@ fn main() {
         ..user1 // 这里没有逗号. 剩余未显示字段与给定实例相同
     };
 
+    print!("user2 = {:#?}.",user2);
+
     // 在创建 user2 后就不能再使用 user1 了，
     // 因为 user1 的 username 字段中的 String 被移到 user2 中 (move)
     // 若只复用user1的 active 和 sign_in_count， 则 user1 还可以继续使用
     //println!("user1 username: {}", user1.username); //无法运行, 被借用
     //println!("user1 email: {}",user1.email); // 可以运行，因为user1.email没有被借用
     let black = Color(0, 0, 0);
+
+    println!("black.0: {}, black.1: {}, black.2: {}.",black.0, black.1, black.2);
     let origin = Point(0, 0, 0);
+
+    println!("origin.0: {}, origin.1: {}, origin.2: {}.", origin.0, origin.1, origin.2);
+
 
     let subject = AlwaysEqual;
 
+    println!("black: {:#?}",black);
+    println!("origin: {:#?}", origin);
+    println!("subject: {:#?}", subject);
 
     /* example */
     let rect1 = Rectangle {
@@ -114,6 +131,10 @@ fn main() {
 
     let sq = Rectangle::square(3);
     println!("Square is : {:#?}",sq);
+
+
+    let user3: User = build_user(String::from("user3@example.com"), String::from("Lihua"));
+    println!("{:#?}", user3);
 }
 
 // 字段初始化简写
